@@ -1,0 +1,11 @@
+<button
+  type="button"
+  *ngFor="let button of keyPad"
+  (click)="emitInput(button.value)"
+  [ngClass]="{
+    equal: button.key === keyEnum.Enter || button.key === keyEnum.Equal,
+    functions: !isNumber(button.value) && button.key !== keyEnum.Decimal
+  }"
+>
+  {{ button.key }}
+</button>
