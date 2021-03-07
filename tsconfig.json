@@ -2,7 +2,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": "./src",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
@@ -16,10 +16,17 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "es2020",
-    "lib": [
-      "es2018",
-      "dom"
-    ]
+    "newLine": "lf",
+    "lib": ["es2017", "es2018", "ES2019", "dom"],
+    "paths": {
+      "@Calculator.*": ["app/calculator/calculator.*"],
+      "@Calculator/*": ["app/calculator/*"],
+      "@Pipes/*": ["app/shared/pipes/*"],
+      "@Enums/*": ["app/shared/enums/*"],
+      "@Interfaces/*": ["app/shared/interfaces/*"],
+      "@Shared/*": ["app/shared/*"],
+      "@App/*": ["app/*"]
+    }
   },
   "angularCompilerOptions": {
     "strictInjectionParameters": true,
