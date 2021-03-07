@@ -1,0 +1,16 @@
+:host {
+  display: flex;
+  height: 80px;
+  width: 100%;
+  flex-direction: column;
+  text-align: right;
+  padding: 6px;
+  box-sizing: border-box;
+  background-color: #303f9f;
+
+  div {
+    &.inputValue {
+      font-size: 2em;
+    }
+  }
+}
