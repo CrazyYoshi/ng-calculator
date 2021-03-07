@@ -1,0 +1,13 @@
+<div class="calculator-container">
+  <div class="calculator-col calculator-col-left">
+    <calculator-display [currentOperation]="Display"></calculator-display>
+    <calculator-numpad (keyPress)="keySwitch($event)"></calculator-numpad>
+  </div>
+
+  <div class="calculator-col calculator-col-right">
+    <calculator-history
+      [operations]="operations"
+      (selectedOperation)="selectedHistoryOperation($event)"
+    ></calculator-history>
+  </div>
+</div>
