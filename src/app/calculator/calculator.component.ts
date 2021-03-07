@@ -25,6 +25,14 @@ export class CalculatorComponent {
       operator: this.operator,
     };
   }
+
+  /**
+   * Switch method determining which course of action to take
+   * based on input key.
+   *
+   * @param {NumpadKey} key
+   * @memberof CalculatorComponent
+   */
   keySwitch(key: NumpadKey): void {
     //If number
     if (_isNumber(key)) {
@@ -63,6 +71,14 @@ export class CalculatorComponent {
     }
     this.lastKey = key;
   }
+
+  /**
+   * Set the selected operator for the mathematic operation
+   * and trigger the execute method if both values are set.
+   *
+   * @param {NumpadKey} key Operator
+   * @memberof CalculatorComponent
+   */
   switchOperator(key: NumpadKey): void {
     this.val2 = this.val1 ? parseFloat(this.input) || undefined : undefined;
     this.val1 = this.val1 ?? (parseFloat(this.input) || undefined);
@@ -72,6 +88,14 @@ export class CalculatorComponent {
     } else if (this.val1 && this.input !== '') this.input = '';
     this.operator = (key as unknown) as Operator;
   }
+
+  /**
+   * Execute the mathematic operation if two values and
+   * the operator are defined. And store the operation in
+   * the operation array.
+   *
+   * @memberof CalculatorComponent
+   */
   execute(): void {
     this.val2 = this.val2 ?? (parseFloat(this.input) || undefined);
     if (this.val1 && this.val2 && this.operator) {
@@ -102,7 +126,24 @@ export class CalculatorComponent {
       this.val2 = undefined;
     }
   }
+
+  /**
+   * Return a negated stringified value of the input string.
+   * In case of an empty string return minus sign or nothing
+   *
+   * @param {string} inputString
+   * @return {*}  {string}
+   * @memberof CalculatorComponent
+   */
   negate(inputString: string): string;
+
+  /**
+   * Return a negated value of the input number
+   *
+   * @param {number} inputNumber
+   * @return {*}  {number} negated value of inputNumber
+   * @memberof CalculatorComponent
+   */
   negate(inputNumber: number): number;
   negate(input: string | number): string | number {
     const negated = (parseFloat(input as string) || 0) * -1;
@@ -113,15 +154,38 @@ export class CalculatorComponent {
       return negated;
     }
   }
+
+  /**
+   * Resets input parameter, operator and operation values
+   * to undefined.
+   *
+   * @memberof CalculatorComponent
+   */
   clear(): void {
     this.input = '';
     this.val1 = undefined;
     this.val2 = undefined;
     this.operator = undefined;
   }
+
+  /**
+   * Determines if input numpadkey is an operator
+   *
+   * @param {(NumpadKey | undefined)} key
+   * @return {*}  {boolean}
+   * @memberof CalculatorComponent
+   */
   isKeyOperator(key: NumpadKey | undefined): boolean {
     return key ? Object.values(Operator).includes(key) : false;
   }
+
+  /**
+   * Set input based on result property of the Operation input parameter
+   *
+   * @param {Operation} operation
+   * @memberof CalculatorComponent
+   */
   selectedHistoryOperation(operation: Operation): void {
     this.input = operation.result?.toString() || '';
   }
+}
