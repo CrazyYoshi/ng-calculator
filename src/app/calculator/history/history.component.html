@@ -1,0 +1,6 @@
+<h3>History</h3>
+<ul>
+  <li *ngFor="let op of operations" (click)="emitOperation(op)">
+    {{ op | formatOperation }}
+  </li>
+</ul>
